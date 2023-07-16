@@ -233,7 +233,7 @@ HashTable<K,V,Prober,Hash,KEqual>::HashTable(
     // Initialize any other data members as necessary
     size_ = 0;
     table_.resize(CAPACITIES[mIndex_]);
-    loadingCnt_ = 0;
+    loadingCnt_ = 0; // AK: Need to initialize this!!!
 
 }
 
