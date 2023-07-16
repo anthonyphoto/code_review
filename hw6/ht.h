@@ -207,7 +207,7 @@ private:
     // ADD MORE DATA MEMBERS HERE, AS NECESSARY
     double rAlpha_;
     size_t size_;
-    size_t loadingCnt_; // AK: added
+    size_t loadingCnt_; // AK: changed
 };
 
 // ----------------------------------------------------------------------------
@@ -233,7 +233,7 @@ HashTable<K,V,Prober,Hash,KEqual>::HashTable(
     // Initialize any other data members as necessary
     size_ = 0;
     table_.resize(CAPACITIES[mIndex_]);
-    loadingCnt_ = 0;
+    loadingCnt_ = 0; // AK: Need to initialize this!!!
 
 }
 
@@ -266,7 +266,7 @@ void HashTable<K,V,Prober,Hash,KEqual>::insert(const ItemType& p)
     std::cout << "--lf: " << (double)loadingCnt_/CAPACITIES[mIndex_] << " ";
     std::cout << "lc " << loadingCnt_ << std::endl;
     // std::cout << "count " << size_ << std::endl;
-    if ((double)loadingCnt_/CAPACITIES[mIndex_] >= rAlpha_) { // AK added
+    if ((double)loadingCnt_/CAPACITIES[mIndex_] >= rAlpha_) { // AK changed
         resize();
     }
     HASH_INDEX_T idx = probe(p.first);
